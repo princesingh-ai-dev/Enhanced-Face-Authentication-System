@@ -1,0 +1,5 @@
+node_modules
+embeddings.json
+public/models
+.env
+.DS_Store

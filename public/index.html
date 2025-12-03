@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Face Authentication</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Load face-api.js -->
+    <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>FaceGuard <span class="highlight">Auth</span></h1>
+            <p>Secure Real-Time Biometric Access</p>
+        </header>
+
+        <main>
+            <div class="video-container">
+                <video id="video" width="720" height="560" autoplay muted playsinline></video>
+                <div id="canvas-wrapper"></div>
+                <div class="scanner-line"></div>
+                <div id="loading-spinner" class="spinner"></div>
+                <button id="start-camera-btn" class="btn primary"
+                    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10;">Start
+                    Camera</button>
+            </div>
+            <div id="debug-log"
+                style="color: yellow; font-family: monospace; font-size: 0.8rem; margin-top: 1rem; text-align: left; max-height: 100px; overflow-y: auto; background: rgba(0,0,0,0.5); padding: 0.5rem; display: none;">
+            </div>
+
+            <div class="controls">
+                <div class="input-group" style="margin-bottom: 1rem;">
+                    <select id="camera-select"
+                        style="padding: 0.8rem; border-radius: 0.5rem; border: 1px solid var(--secondary); background: var(--card-bg); color: var(--text-main); width: 300px;">
+                        <option value="" disabled selected>Select Camera...</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="username" placeholder="Enter your name to register">
+                </div>
+                <div class="button-group">
+                    <button id="register-btn" class="btn secondary">Register Face</button>
+                    <button id="login-btn" class="btn primary">Authenticate</button>
+                </div>
+            </div>
+
+            <div id="status-message" class="status">Initializing system...</div>
+
+            <div id="protected-content" class="hidden">
+                <div class="content-card">
+                    <h2>🔓 Access Granted</h2>
+                    <p>Welcome to the secure area. Your identity has been verified.</p>
+                    <div class="secret-data">
+                        CONFIDENTIAL DATA: 42
+                    </div>
+                </div>
+
+                <div id="user-list-container"
+                    style="margin-top: 2rem; width: 100%; max-width: 500px; margin-left: auto; margin-right: auto; background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 1rem;">
+                    <h3 style="margin-bottom: 1rem; color: var(--text-main); font-size: 1.2rem;">Registered Users</h3>
+                    <ul id="user-list" style="list-style: none; padding: 0;">
+                        <!-- User items will be injected here -->
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
