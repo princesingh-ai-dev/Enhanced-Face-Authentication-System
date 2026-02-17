@@ -1,82 +1,97 @@
-# FaceGuard Auth - Secure Face Authentication System
+# 🔐 FaceGuard Auth — Secure Face Authentication System
 
-FaceGuard Auth is a secure, real-time biometric access system built with Node.js, Express, and face-api.js. It allows users to register their face, authenticate to gain access to protected content, and manage registered users.
+<div align="center">
 
-## Features
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-- **Real-time Face Detection**: Uses `face-api.js` for fast and accurate face detection in the browser.
-- **Secure Authentication**: Verifies user identity by comparing face descriptors with a stored database.
-- **User Management**: Register new users and delete existing ones.
-- **Responsive Design**: Modern, glassmorphism-inspired UI that works on various screen sizes.
-- **Local Privacy**: Face descriptors are stored locally in a JSON file (`embeddings.json`), ensuring data privacy.
+**Secure, real-time biometric access system with face-api.js, glassmorphism UI & local-first privacy.**
 
-## Prerequisites
+Register faces, authenticate users, and manage access — all running in the browser with zero cloud dependency.
 
-- [Node.js](https://nodejs.org/) (v14 or higher recommended)
-- A webcam or camera-enabled device.
+</div>
 
-## Installation
+---
 
-1.  **Clone the repository:**
+## ✨ Features
 
-    ```bash
-    git clone <repository-url>
-    cd Face_Authentication_using_Trae
-    ```
+- 🎥 **Real-Time Face Detection** — Browser-based face detection with face-api.js (no server-side processing)
+- 🔐 **Secure Authentication** — Compares face descriptors against stored embeddings for identity verification
+- 👤 **User Management** — Register new users and delete existing ones through the UI
+- 🎨 **Glassmorphism UI** — Modern, responsive design with frosted glass effects
+- 🏠 **Local Privacy** — All face descriptors stored locally in `embeddings.json` — your data never leaves your machine
 
-2.  **Install dependencies:**
+## 🎬 How It Works
 
-    ```bash
-    npm install
-    ```
+```
+┌─────────────────┐     ┌──────────────────┐     ┌─────────────────┐
+│   Browser        │────▶│   face-api.js    │────▶│   Compare with  │
+│   Webcam Feed    │     │   Detection +    │     │   Stored Face   │
+│                  │     │   Descriptor     │     │   Embeddings    │
+└─────────────────┘     └──────────────────┘     └────────┬────────┘
+                                                          │
+                                                    Match Found?
+                                                    ├── ✅ Grant Access
+                                                    └── ❌ Deny Access
+```
 
-    *Note: This will also automatically download the necessary face-api.js models to the `public/models` directory.*
+## 📋 Prerequisites
 
-## Usage
+- [Node.js](https://nodejs.org/) v14 or higher
+- A webcam or camera-enabled device
 
-1.  **Start the server:**
+## 🚀 Quick Start
 
-    ```bash
-    npm start
-    ```
+```bash
+# 1. Clone the repository
+git clone https://github.com/princesingh1702/Enhanced-Face-Authentication-System.git
+cd Enhanced-Face-Authentication-System
 
-2.  **Open the application:**
+# 2. Install dependencies (auto-downloads face-api.js models)
+npm install
 
-    Open your browser and navigate to `http://localhost:3000`.
+# 3. Start the server
+npm start
 
-3.  **Allow Camera Access:**
+# 4. Open http://localhost:3000 in your browser
+```
 
-    When prompted, allow the browser to access your camera.
+## 📁 Project Structure
 
-4.  **Register a User:**
-    -   Enter your name in the input field.
-    -   Click "Register Face".
-    -   Follow the on-screen instructions (stay still while it captures frames).
+```
+Enhanced-Face-Authentication-System/
+├── server.js           # Express backend — API routes & data storage
+├── download_models.js  # Auto-download face-api.js models
+├── embeddings.json     # Stored face descriptors (auto-created)
+├── package.json        # Dependencies & scripts
+└── public/
+    ├── index.html      # Main application page
+    ├── script.js       # Frontend logic — camera + face-api.js
+    ├── style.css       # Glassmorphism-inspired styling
+    └── models/         # face-api.js neural network models
+```
 
-5.  **Authenticate:**
-    -   Click "Authenticate".
-    -   If your face matches a registered user, you will be granted access to the protected content.
+## 🛠️ Tech Stack
 
-## Project Structure
+| Component | Technology |
+|-----------|------------|
+| Backend | Node.js + Express |
+| Face Detection | face-api.js (TensorFlow.js) |
+| Frontend | HTML5 + CSS3 + Vanilla JS |
+| UI Design | Glassmorphism, responsive |
+| Storage | Local JSON file |
 
--   `server.js`: The Express backend server handling API requests and data storage.
--   `public/`: Contains frontend assets (HTML, CSS, JS) and models.
-    -   `index.html`: The main application page.
-    -   `script.js`: Frontend logic for camera handling and face-api.js interaction.
-    -   `style.css`: Styling for the application.
-    -   `models/`: Directory where face-api.js models are stored (downloaded during setup).
--   `embeddings.json`: JSON file storing registered user data (created automatically).
--   `download_models.js`: Script to download required models.
+## 🐛 Troubleshooting
 
-## Troubleshooting
+| Issue | Solution |
+|-------|----------|
+| Models not loading | Run `npm run postinstall` to download models |
+| Camera not working | Check browser permissions; close other camera apps |
+| "Face Mismatch" | Ensure good lighting, look directly at camera |
+| Port in use | Change port in `server.js` or kill the process |
 
--   **Models not loading?**
-    Run `npm run postinstall` manually to download the models.
--   **Camera not working?**
-    Ensure your browser has permission to access the camera and that no other application is using it.
--   **"Face Mismatch"?**
-    Ensure good lighting and look directly at the camera during authentication.
+## 📄 License
 
-## License
-
-This project is open source and available under the [ISC License](LICENSE).
+MIT License — Feel free to use and modify!
