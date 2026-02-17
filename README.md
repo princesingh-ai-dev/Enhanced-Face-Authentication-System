@@ -46,7 +46,7 @@ Register faces, authenticate users, and manage access — all running in the bro
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/princesingh1702/Enhanced-Face-Authentication-System.git
+git clone https://github.com/princesingh-ai-dev/Enhanced-Face-Authentication-System.git
 cd Enhanced-Face-Authentication-System
 
 # 2. Install dependencies (auto-downloads face-api.js models)
